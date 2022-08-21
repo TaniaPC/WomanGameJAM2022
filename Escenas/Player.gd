@@ -25,7 +25,7 @@ func move(delta):
 	if direction.length() > 0:
 		direction = direction.normalized()
 	
-	var velocity = move_and_slide(direction * speed, Vector2.UP, true)
+	var velocity = move_and_slide(direction * speed * scale, Vector2.UP, true)
 	play_animation(is_floor, velocity)
 	
 
