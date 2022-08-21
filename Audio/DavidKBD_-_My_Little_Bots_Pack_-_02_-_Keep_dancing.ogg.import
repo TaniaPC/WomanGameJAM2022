@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DavidKBD_-_My_Little_Bots_Pack_-_02_-_Keep_dancing.ogg-e48f1c0d10b9d6036c3142bfcf9bec60.oggstr"
+
+[deps]
+
+source_file="res://Audio/DavidKBD_-_My_Little_Bots_Pack_-_02_-_Keep_dancing.ogg"
+dest_files=[ "res://.import/DavidKBD_-_My_Little_Bots_Pack_-_02_-_Keep_dancing.ogg-e48f1c0d10b9d6036c3142bfcf9bec60.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
