@@ -1,25 +1,49 @@
-extends Node2D
+extends KinematicBody2D
 
-export var speed = 400.0
+export var speed = 600.0
 var screen_size = Vector2.ZERO
-const gravedad = 2
-var arriba = Vector2(0, -1)
-var direccion = Vector2.ZERO
+const gravedad = 9.8
+var direction = Vector2.ZERO
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	
 func _physics_process(delta):
-	volar(delta);
+	move(delta);
 	
-func volar(delta):
-	direccion.y += gravedad
+func move(delta):
+	direction.y += gravedad
 	if (Input.is_action_pressed("ui_up")):
-		direccion.y -= (1 + gravedad * 2)
+		direction.y -= (1+ gravedad *2)
 	if (Input.is_action_pressed("ui_left")):
-		direccion.x -= 1
+		direction.x -= 1
+		$Animation.flip_h = true
 	if (Input.is_action_pressed("ui_right")):
-		direccion.x += 1
-		
-	if direccion.length() > 0:
-		direccion = direccion.normalized()
-	position += direccion * speed * delta
+		direction.x += 1
+		$Animation.flip_h = false
+	if (Input.is_action_pressed("ui_down")):
+		direction.y += 1
+	if direction.length() > 0:
+		direction = direction.normalized()
+	
+	var velocity = move_and_slide(direction * speed, Vector2.UP, true)
+	
+	var is_floor = false;
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if (collision.normal.dot(Vector2.UP) > 0.8):
+			is_floor = true
+
+	if is_floor:
+		$Animation.animation = "Walk"
+		$Animation.offset.y = 50;
+		if  velocity == Vector2(0,0) :
+			$Animation.animation = "Idle"
+	else:
+		$Animation.animation = "Fly"
+
+	
+	if($Animation.animation != "Walk"):
+		$Animation.offset.y = 0;
+	$Animation.play()
+
