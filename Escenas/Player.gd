@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var speed = 600.0
+export var speed = 800.0
 const gravedad = 2
 var direction = Vector2.ZERO
 

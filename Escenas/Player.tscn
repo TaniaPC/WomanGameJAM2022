@@ -115,7 +115,7 @@ animations = [ {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "Walk",
-"speed": 20.0
+"speed": 12.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
@@ -124,11 +124,11 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80.5, 112 )
+extents = Vector2( 80.5, 105.5 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 514, 313 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 514, 316 )
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -138,13 +138,15 @@ __meta__ = {
 position = Vector2( 13.25, 14.25 )
 scale = Vector2( 0.885281, 0.899293 )
 frames = SubResource( 7 )
-animation = "Fly"
-frame = 4
+animation = "Walk"
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16.5, 18 )
+position = Vector2( 16.5, 16 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -4, 0 )
+scale = Vector2( 3, 3 )
 current = true
+zoom = Vector2( 2, 2 )
